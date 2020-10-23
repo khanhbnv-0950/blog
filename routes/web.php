@@ -57,3 +57,16 @@ Route::get('ajax',function() {
    return view('message');
 });
 Route::post('/getmsg','AjaxController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin_dashboard', 'Admin\DashboardController@index');
+Route::get('/seller_dashboard', 'Seller\DashboardController@index');
+Route::get('/admin_dashboard', 'Admin\DashboardController@index')->middleware('role:admin');
+Route::get('/seller_dashboard', 'Seller\DashboardController@index')->middleware('role:seller');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
